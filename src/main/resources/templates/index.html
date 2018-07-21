@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Music</title>
+</head>
+<body>
+	<header>
+		<h1>Add Music to the Index</h1>
+		<nav>
+			<a th:href="@{/artists/}">Artists</a> <a th:href="@{/albums/}">Albums</a>
+			<a th:href="@{/songs/}">Songs</a>
+		</nav>
+	</header>
+
+	<main>
+	<form action="/index" method="POST">
+
+		<label for="name"> Artist Name:<input type="text" name="apiName" /></label>
+		<label for="recordLabel"> Record Label:<input type="text" name="apiRecordLabel" /></label>
+		<label for="albumName"> Album Name:<input type="text" name="apiAlbumName" /></label>
+		<label for="releaseDate"> Release Date:<input type="text" name="apiReleaseDate"  placeholder="year or month/year"/></label>
+		<label for="coverImage"> Cover Image URL:<input type="text" name="apiCoverImgUrl" placeholder="www.example.com/.." /></label>
+
+		<!-- needs to be an input -->
+		<input type="submit" value="Submit" />
+	</form>
+	<div>
+		<button id="submitButton">Submit</button>
+	</div>
+	
+	<footer>
+		<h6>Baltes Cartography</h6>
+		<small><a th:href="@{/index/}">Add music</a></small>
+	</footer>
+	</main>
+</body>
+</html>

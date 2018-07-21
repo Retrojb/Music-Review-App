@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Artist</title>
+</head>
+
+<body>
+	<nav>
+		<a th:href="@{/artists/}">Artists</a> <a th:href="@{/albums/}">Albums</a>
+		<ul>
+			<li th:each="artist : ${artists}"><a
+				th:href="|@{/artist/}${artist.name}|" th:text="${artist.name}"></a>
+			</li>
+		</ul>
+	</nav>
+	<h1>Music Artist Page</h1>
+
+
+	<ul>
+		<li th:each="artist : ${artists}"><a
+			th:href="|@{/artist/}${artist.name}|"><span
+				th:text="${artist.name}"></span></a></li>
+	</ul>
+	<ul>
+		<li th:each="album : ${artist.albums}"><a
+			th:href="|@{/artist/}${artist.name}/@{album/}${album.albumName}|"> <span
+				th:text="${album.albumName}"> </span></a></li>
+	</ul>
+	
+	<footer>
+		<small>Baltes Cartography &copy;</small>
+	</footer>
+</body>
+
+
+</html>

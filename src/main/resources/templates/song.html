@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title th:text="${song.songName}">Song page</title>
+</head>
+
+<body>
+	<nav>
+			<a th:href="@{/artists/}">Artists</a>
+			<a th:href="@{/albums/}">Albums</a>
+			<a th:href="@{/songs/}">Songs</a>
+	</nav>
+	
+	<h1>Song Review</h1>
+	<h2 th:text="${song.songName}"></h2>
+	
+
+
+<footer>
+		<small>Baltes Cartography &copy;</small>
+		
+	</footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Albums</title>
+</head>
+<body>
+	<h1>Albums page</h1>
+	<ul>
+		<li th:each="album : ${albums}"><a
+			th:href="|@{/album/}${album.albumName}|"> <span
+				th:text="${album.albumName}"></span></a></li>
+	</ul>
+
+</body>
+</html>

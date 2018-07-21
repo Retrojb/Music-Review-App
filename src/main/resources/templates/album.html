@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title th:text="${album.albumName}">Album page</title>
+</head>
+<body>
+	<nav>
+			<a th:href="@{/artists/}">Artists</a>
+			<a th:href="@{/albums/}">Albums</a>
+			<a th:href="@{/songs/}">Songs</a>
+	</nav>
+	
+		<h1 th:text="${album.albumName}"></h1>
+	
+	<ul class="songList">
+		
+		<li th:each="song : ${album.songs}">
+			<a th:href="|/@{album/}${album.albumName}@{/song/}${song.songName}|">
+			<span th:text="${song.songName}">
+			</span>
+			</a>
+		</li>
+	</ul>
+	
+</body>
+
+
+</html>

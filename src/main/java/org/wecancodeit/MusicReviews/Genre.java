@@ -32,9 +32,9 @@ public class Genre {
 		return Genre;
 	}
 
-	public Collection<Albums> getArtist() {
-		return albums;
-	}
+//	public Collection<Albums> getArtist() {
+//		return albums;
+//	}
 
 	@Override
 	public String toString() {

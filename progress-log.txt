@@ -1,0 +1,6 @@
+Where I am at @12:43am:
+
+Can add artists to artists page, does not auto refresh
+
+Have input set up for add album. API controller has a POST method, need to add a GET method to return it.
+need to fix the albumsApi.js error, make sure @JSONIgnore is on the ablum.pojo (@OneToMany).

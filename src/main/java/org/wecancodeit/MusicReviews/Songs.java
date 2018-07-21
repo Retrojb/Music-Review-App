@@ -63,8 +63,7 @@ public class Songs {
 		
 		@Override
 		public String toString() {
-			return "Songs [songName=" + songName + ", length=" + length + ", lyrics=" + lyrics + ", rating=" + rating
-					+ "]";
+			return songName + length + lyrics + rating;
 		}
 		
 		

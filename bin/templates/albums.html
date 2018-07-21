@@ -5,11 +5,31 @@
 </head>
 <body>
 	<h1>Albums page</h1>
+	<h3>Add an Album</h3>
+		<p> Follow the guide below to add an album. What you will need:
+			Album Name, Artist, Genre, Year Released, and  a URL to a 
+			album cover</p>
 	<ul>
 		<li th:each="album : ${albums}"><a
 			th:href="|@{/album/}${album.albumName}|"> <span
 				th:text="${album.albumName}"></span></a></li>
 	</ul>
+	
+	
+	<div>
 
+		<label for="name"> Artist Name:<input type="text" name="apiName" /></label>
+		
+		<label for="albumName"> Album Name:<input type="text" name="apiAlbumName" /></label>
+		<label for="genre">Genre:<input type="text" name="apiGenre" /></label>
+		<label for="releaseDate"> Release Date:<input type="text" name="apiReleaseDate"  placeholder="year or month/year"/></label>
+		<label for="coverImage"> Cover Image URL:<input type="text" name="apiCoverImgUrl" placeholder="www.example.com/.." /></label>
+
+		<!-- needs to be an input -->
+		<!--<input type="submit" value="Submit" /> -->
+		<button id="submitAlbumButton">Submit</button>
+	</div>
+	
+<script src="/JS/albumApi.js"></script>
 </body>
 </html>

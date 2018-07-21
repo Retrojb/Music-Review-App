@@ -5,37 +5,33 @@
 <title>Artists</title>
 </head>
 
-
 <body>
 	<h1>Musical Artists Page</h1>
 	<nav>
 		<a th:href="@{/artists/}">Artists</a> <a th:href="@{/albums/}">Albums</a> <a th:href="@{/songs/}">Songs</a>
 	</nav>
-	<ul>
+	<div >
+	<ul id="artists">
 		<li th:each="artist : ${artists}"><a
 			th:href="|@{/artist/}${artist.name}|" th:text="${artist.name}"></a></li>
 	</ul>
-
-	<button>
-		<a th:href="index.html">Add Music</a>
-	</button>
-	<form action="/artists" method="POST">
-
+</div>
+	
+	<div>
 		<label for="name"> Artist Name:<input type="text"
 			name="apiName" /></label> <label for="recordLabel"> Record Label:<input
 			type="text" name="apiRecordLabel" /></label>
 
-		<!-- needs to be an input -->
-		<input type="submit" value="Submit" />
-	</form>
-	<div>
+		<!-- <input type="submit" value="Submit" />  -->
 		<button id="submitButton">Submit</button>
+
 	</div>
+		<!-- needs to be an input -->
 	
-		<footer>
+	<footer>
 		<h6>Baltes Cartography</h6>
-		<small><a th:href="@{/index/}">Add music</a></small>
 	</footer>
-	<script src="/JS/api.js"></script>
+		
+	<script src="/JS/artistApi.js"></script>
 </body>
 </html>

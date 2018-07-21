@@ -12,17 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class artistController {
 
 	@Autowired
-	private ArtistRepository artistRepo;
+	ArtistRepository artistRepo;
 	
 	@Autowired
 	AlbumsRepository albumRepo;
-//
-//	@Autowired
-//	GenreRepository genreRepo;
-//	
+	
 	@Autowired
 	SongsRepository songRepo;
-//	
+	
 	@RequestMapping("/index")
 	public String home() {
 		return "index";
@@ -33,11 +30,13 @@ public class artistController {
 		model.addAttribute("artists", artistRepo.findAll());
 		return "artists";
 	}
+	
 	@RequestMapping("/albums")
 	public String getAlbums(Model model) {
 		model.addAttribute("albums", albumRepo.findAll());
 		return "albums";
 	}
+	
 	@RequestMapping("/songs")
 	public String getSongs(Model model) {
 		model.addAttribute("songs", songRepo.findAll());
@@ -69,7 +68,6 @@ public class artistController {
 		return "songs";
 	}
 	
-	
 	@RequestMapping(value = "/artists", method = RequestMethod.POST)
 	public String addArtist(String name, String recordLabel) {
 		Artist artist = artistRepo.findByName(name);
@@ -92,20 +90,6 @@ public class artistController {
 		model.addAttribute("song", songRepo.findBySongName(songName));
 		return "song";
 	}
-	
-//	@RequestMapping(value = "/artists", method = RequestMethod.POST)
-//	public String addMusican(@RequestParam String name, @RequestParam String recordLabel) {
-////		if(artistRepo.findByName(name) == null) {
-////			Artist artistToAdd = artistRepo.save(new Artist(name, recordLabel));
-////		}
-//		return "redirect:/artists";
-//	}
-//	
-//	@RequestMapping("/album")
-//	public String getAlbum(@PathVariable(name = "albumName") String albumName, Model model) {
-//		model.addAttribute("album", albumRepo.findByName(albumName));
-//		return "album";
-//	}
-	
+		
 	
 }

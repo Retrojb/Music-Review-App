@@ -21,9 +21,10 @@ public class Albums {
 		private String releaseDate;
 		private String coverImage;
 		
+		
 		@ManyToOne
 		private Artist artist;
-		
+	
 		@ManyToOne
 		private Genre genre;
 
@@ -32,7 +33,7 @@ public class Albums {
 		
 		public Albums() {}
 		
-		public Albums(String albumName, String releaseDate, String coverImage, Artist artist,Genre genre) {
+		public Albums(String albumName, String releaseDate, String coverImage, Artist artist) {
 			this.albumName = albumName;
 			this.releaseDate = releaseDate;
 			this.coverImage = coverImage;
@@ -56,12 +57,12 @@ public class Albums {
 		public Collection<Songs> getSongs() {
 			return songs;
 		}
-		public Genre getGenre() {
-			return genre;
-		}
-		public Artist getArtist() {
-			return artist;
-		}
+//		public Genre getGenre() {
+//			return genre;
+//		}
+//		public Artist getArtist() {
+//			return artist;
+//		}
 		public String getCoverImage() {
 			return coverImage;
 		}

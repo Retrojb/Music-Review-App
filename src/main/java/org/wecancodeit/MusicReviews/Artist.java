@@ -1,13 +1,13 @@
 package org.wecancodeit.MusicReviews;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Artist {
@@ -19,9 +19,11 @@ public class Artist {
 	private String name;
 	private String recordLabel;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "artist")
 	private Collection<Albums> albums;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "artist")
 	private Collection<Songs> songs;
 
@@ -50,7 +52,6 @@ public class Artist {
 	}
 
 	public Collection<Songs> getSongs() {
-		// TODO Auto-generated method stub
 		return songs;
 	}
 

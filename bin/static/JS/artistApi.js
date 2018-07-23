@@ -6,6 +6,8 @@ console.log('poop');
 console.log(recordLabel);
 console.log(name);
 
+showArtists();
+
 submitButton.addEventListener ("click" , function addArtist(){
 	
 	const xhr = new XMLHttpRequest()
@@ -25,7 +27,7 @@ submitButton.addEventListener ("click" , function addArtist(){
 					</li>
 					`
 			})
-			artists.innerHTML = list
+			artistList.innerHTML = list
 		}
 	})
 		xhr.open("POST", `/api/artists/?name=${name.value}&recordLabel=${recordLabel.value}`, true)
@@ -40,15 +42,15 @@ function showArtists() {
 	xhr.onreadystatechange = function(response) {
 		if(xhr.readyState == 4 && xhr.response == 200) {
 			
-			const allArtists = JSON.parse(response.currentTarget.response);
+			const artists = JSON.parse(response.currentTarget.response);
 			let list = ''
-			allArtists.forEach(function(artist){
+			artists.forEach(function(artist){
 				list +=`
 				<li> 
 					<a href="/artists/${artist.name}"> ${artist.name} </a>
  				`
 			})
-			artistList.innerHTML = list
+			artists.innerHTML = list
 		}
 	}
 	

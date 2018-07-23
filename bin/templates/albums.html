@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/CSS/layout.css"  />
 <title>Albums</title>
 </head>
+
 <body>
+<main class="mainContainer">
+
+<section class= "grid-item grid-item-nav">
+	
 <nav>
 		<a th:href="@{/artists/}">Artists</a> <a th:href="@{/songs/}">Songs</a> <a th:href="@{/songs/}">Songs</a>
 	</nav>
+</section>
+
+<section class= "grid-item grid-item-heading">
+	
 	<h1>Albums page</h1>
+	
+</section>
+<section class= "grid-item grid-item-body">
+	
 	<h3>Add an Album</h3>
 		<p> Follow the guide below to add an album. What you will need:
 			Album Name, Artist, Genre, Year Released, and  a URL to a 
@@ -15,7 +29,9 @@
 	<ul id="album-list">
 		<li th:each="album : ${albums}"><a
 			th:href="|@{/album/}${album.albumName}|"> <span
-				th:text="${album.albumName}"></span></a></li>
+				th:text="${album.albumName}"></span>
+				</a>
+				</li>
 	</ul>
 	
 	
@@ -32,7 +48,14 @@
 		<!--<input type="submit" value="Submit" /> -->
 		<button id="submitAlbumButton">Submit</button>
 	</div>
-	
+</section>
+
+<section class="grid-item grid-item-footer">
+	<footer>
+		<h4>Baltes Cartography &copy;</h4>
+	</footer>
+</section>
+</main>
 <script src="/JS/albumApi.js"></script>
 </body>
 </html>

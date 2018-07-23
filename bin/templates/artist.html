@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/CSS/layout.css"  />
 <title>Artist</title>
 </head>
 
 <body>
+<main class="mainContainter">
+	
+	<header>
+	<section class= "grid-item grid-item-nav">
 	<nav>
 		<a th:href="@{/artists/}">Artists</a> <a th:href="@{/albums/}">Albums</a>
 		<ul>
@@ -13,23 +18,27 @@
 			</li>
 		</ul>
 	</nav>
-	<h1>Music Artist Page</h1>
+</section>
+	<section class= "grid-item grid-item-heading">
+	<h1 th:text="${artist.name}"></h1>
+	<h4 th:text="${artist.recordLabel}"></h4>
+</section>
+</header>
 
-
-	<ul>
-		<li th:each="artist : ${artists}"><a
-			th:href="|@{/artist/}${artist.name}|"><span
-				th:text="${artist.name}"></span></a></li>
-	</ul>
+<section class= "grid-item grid-item-body">
 	<ul>
 		<li th:each="album : ${artist.albums}"><a
 			th:href="|@{/artist/}${artist.name}/@{album/}${album.albumName}|"> <span
 				th:text="${album.albumName}"> </span></a></li>
 	</ul>
-	
+</section>
+
+<section class= "grid-item grid-item-footer">
 	<footer>
 		<small>Baltes Cartography &copy;</small>
 	</footer>
+	</section>
+	</main>
 </body>
 
 

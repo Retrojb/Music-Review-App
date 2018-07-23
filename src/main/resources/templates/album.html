@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="/CSS/layout.css"  />
+
 	<title th:text="${album.albumName}">Album page</title>
 </head>
+
 <body>
+<main class="mainContainer">
+
+<header>
+<section class= "grid-item grid-item-nav">
+	
 	<nav>
 			<a th:href="@{/artists/}">Artists</a>
 			<a th:href="@{/albums/}">Albums</a>
 			<a th:href="@{/songs/}">Songs</a>
 	</nav>
+	</section>
+	
+	<section class= "grid-item grid-item-heading">
 	
 		<h1 th:text="${album.albumName}"></h1>
+	</section>
+</header>
+	<section class= "grid-item grid-item-body">
+	
 	<ul>
 	  <li th:each="song : ${album.songs}">
                 <a th:href="@{/song/} + ${song.songName}">
@@ -18,6 +34,7 @@
                 </a>
             </li>
 	</ul>
+	
 	<div>
 		<label for="name"> Artist Name:<input type="text" name="apiName"  /></label>
 		<label for="albumName"> Album Name:<input type="text" name="apiAlbumName" /></label>
@@ -29,7 +46,14 @@
 		<!--<input type="submit" value="Submit" /> -->
 		<button id="submitSongButton">Submit</button>
 	</div>
-	
+	</section>
+
+<section class="grid-item grid-item-footer">
+	<footer>
+		<h4>Baltes Cartography &copy;</h4>
+	</footer>
+</section>
+</main>
 	<script src="/JS/songApi.js"></script>
 </body>
 

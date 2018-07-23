@@ -61,6 +61,16 @@ public class ApiController {
 	public Artist returnArtist(@PathVariable(name = "name") String name) {
 		return artistRepo.findByName(name);
 	}
+	
+	// DELETE an Artist and Albums
+	@RequestMapping(value = "/artists", method = RequestMethod.DELETE)
+	public Collection<Artist> deleteArtist(@RequestParam(value = "name") String name){
+		for (Albums album : artistRepo.findByName(name).getAlbums()) {
+			albumsRepo.delete(album);
+		}
+		artistRepo.delete(artistRepo.findByName(name));
+		return (Collection<Artist>) artistRepo.findAll();
+	}
 
 	// Allows the user to ADD/POST an Artist into the DB
 	@RequestMapping(value = "/albums", method = RequestMethod.POST)

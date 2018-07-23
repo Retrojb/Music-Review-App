@@ -4,3 +4,9 @@ Can add artists to artists page, does not auto refresh
 
 Have input set up for add album. API controller has a POST method, need to add a GET method to return it.
 need to fix the albumsApi.js error, make sure @JSONIgnore is on the ablum.pojo (@OneToMany).
+
+figure out why my delete method is not hitting.
+
+in albums page, change the add an album to grid container of its own. and move ecerthing into columns.
+
+Still need to add CSS to songs and songs.

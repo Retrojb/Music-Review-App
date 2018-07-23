@@ -13,23 +13,23 @@ public class Genre {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String Genre;
+	private String genreType;
 	
 	@OneToMany(mappedBy = "genre")
 	private Collection<Albums> albums;
 	
 	public Genre() {}
 
-	public Genre(String genre) {
-		Genre = genre;
+	public Genre(String genreType) {
+		this.genreType = genreType;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getGenre() {
-		return Genre;
+	public String getGenreType() {
+		return genreType;
 	}
 
 //	public Collection<Albums> getArtist() {
@@ -38,7 +38,7 @@ public class Genre {
 
 	@Override
 	public String toString() {
-		return  Genre;
+		return  genreType;
 	}
 	
 	

@@ -1,6 +1,5 @@
 package org.wecancodeit.MusicReviews;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -8,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Albums {
@@ -28,12 +28,13 @@ public class Albums {
 		@ManyToOne
 		private Genre genre;
 
+		@JsonIgnore
 		@OneToMany(mappedBy = "albums")
 		private Collection<Songs> songs;
 		
 		public Albums() {}
 		
-		public Albums(String albumName, String releaseDate, String coverImage, Artist artist) {
+		public Albums(String albumName, String releaseDate, String coverImage,Genre genre, Artist artist) {
 			this.albumName = albumName;
 			this.releaseDate = releaseDate;
 			this.coverImage = coverImage;

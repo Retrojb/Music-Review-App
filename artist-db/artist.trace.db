@@ -341,3 +341,9 @@ insert into albums (id, album_name, artist_id, cover_image, genre_id, release_da
 2018-07-18 14:47:27 jdbc[12]: exception
 org.h2.jdbc.JdbcSQLException: Value too long for column "COVER_IMAGE VARCHAR(255)": "'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjJ0ua7-KjcAhUM04MKHSwWC68QjRx6BAgBEAU&url=http%3A%2... (323)"; SQL statement:
 insert into albums (id, album_name, artist_id, cover_image, genre_id, release_date) values (null, ?, ?, ?, ?, ?) [22001-197]
+2018-07-22 19:15:25 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE*[*]FROM ALBUMS"; expected "identifier"; SQL statement:
+DELETE*FROM ALBUMS [42001-197]
+2018-07-22 19:15:40 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE*[*]FROM ARTIST"; expected "identifier"; SQL statement:
+DELETE*FROM ARTIST [42001-197]

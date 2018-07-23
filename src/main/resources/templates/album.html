@@ -11,17 +11,26 @@
 	</nav>
 	
 		<h1 th:text="${album.albumName}"></h1>
-	
-	<ul class="songList">
-		
-		<li th:each="song : ${album.songs}">
-			<a th:href="|/@{album/}${album.albumName}@{/song/}${song.songName}|">
-			<span th:text="${song.songName}">
-			</span>
-			</a>
-		</li>
+	<ul>
+	  <li th:each="song : ${album.songs}">
+                <a th:href="@{/song/} + ${song.songName}">
+                    <span th:text="${song.songName}"></span>
+                </a>
+            </li>
 	</ul>
+	<div>
+		<label for="name"> Artist Name:<input type="text" name="apiName" /></label>
+		<label for="albumName"> Album Name:<input type="text" name="apiAlbumName" /></label>
+		<label for="songName"> Song Name:<input type="text" name="apiSongName" /></label>
+		<label for="length"> Track Length:<input type="text" name="apiLength" /></label>
+		<label for="lyrics"> Lyrics:<input type="text" name="apiLyrics" /></label>
+		<label for="rating">Rating :<input type="text" name="apiRating" /></label>
+		<!-- needs to be an input -->
+		<!--<input type="submit" value="Submit" /> -->
+		<button id="submitSongButton">Submit</button>
+	</div>
 	
+	<script src="/JS/songApi.js"></script>
 </body>
 
 

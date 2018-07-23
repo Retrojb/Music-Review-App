@@ -35,10 +35,11 @@ submitButton.addEventListener ("click" , function addSong(){
 			console.log('tits');
 		}
 	})
-		xhr.open("POST", `/api/albums/${albumName.value}?name=${name.value}&albumName=${albumName.value}&songName=${songName.value}&length=${length.value}&lyrics=${lyrics.value}&rating=${rating.value}`, true)
+		xhr.open("POST", `/api/artist/${name.value}/albums/${albumName.value}?name=${name.value}&albumName=${albumName.value}&songName=${songName.value}&length=${length.value}&lyrics=${lyrics.value}&rating=${rating.value}`, true)
 		xhr.send();
 	})
-		
+
+	
 
 
 //function showSong() {

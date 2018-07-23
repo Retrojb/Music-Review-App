@@ -95,7 +95,7 @@ public class ApiController {
 	}
 
 	// Allows the user to ADD/POST an Song into the DB
-	@RequestMapping(value = "/album/{album.albumName}", method = RequestMethod.POST)
+	@RequestMapping(value = "artist/{artist.name}/albums/album/{album.albumName}/", method = RequestMethod.POST)
 	public Collection<Songs> addSongs(@RequestParam(value = "name") String name,
 			@RequestParam(value = "albumName") String albumName, @RequestParam(value = "songName") String songName,
 			@RequestParam(value = "length") Double length, @RequestParam(value = "lyrics") String lyrics,
@@ -118,14 +118,14 @@ public class ApiController {
 		Songs song = songRepo.findBySongName(songName);
 
 		if (song == null) {
-			song = new Songs(songName, length, lyrics, rating, albumsRepo.findByAlbumName(albumName), artist);
+			song = new Songs(songName, length, lyrics, rating, albumsRepo.findByAlbumName(albumName), artistRepo.findByName(name));
 		}
 		songRepo.save(song);
 
 		return (Collection<Songs>) songRepo.findAll();
 	}
 
-	@RequestMapping(value = "/album/{album.albumName}", method = RequestMethod.GET)
+	@RequestMapping(value = "artist/{artist.name}/albums/album/{album.albumName}/", method = RequestMethod.GET)
 	public Songs returnSong(@PathVariable(name = "songName") String songName) {
 		return songRepo.findBySongName(songName);
 	}

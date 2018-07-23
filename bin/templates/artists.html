@@ -2,36 +2,58 @@
 <html>
 <head>
 
+<link rel="stylesheet" href="/CSS/layout.css"  />
 <title>Artists</title>
 </head>
 
 <body>
-	<h1>Musical Artists Page</h1>
+<main class="mainContainer">
+
+<header>
+	<section class= "grid-item grid-item-nav">
 	<nav>
-		<a th:href="@{/artists/}">Artists</a> <a th:href="@{/albums/}">Albums</a> <a th:href="@{/songs/}">Songs</a>
+		<a th:href="@{/artists/}">Artists</a>
+		<a th:href="@{/albums/}">Albums</a> 
+		<a th:href="@{/songs/}">Songs</a>
 	</nav>
+	</section>
+	
+	<section class="grid-item grid-item-heading">
+	<h1>Artists Home Page</h1>
+	</section>
+</header>
+
+
+	<section class="grid-item grid-item-body">
+	<h3>Pick an Artist to check out their discography</h3>
 	<div >
-	<ul id="artists">
-		<li th:each="artist : ${artists}"><a
-			th:href="|@{/artist/}${artist.name}|" th:text="${artist.name}"></a></li>
-	</ul>
-</div>
-	
-	<div>
-		<label for="name"> Artist Name:<input type="text"
-			name="apiName" /></label> <label for="recordLabel"> Record Label:<input
-			type="text" name="apiRecordLabel" /></label>
-
-		<!-- <input type="submit" value="Submit" />  -->
-		<button id="submitButton">Submit</button>
-
+		<ul id="artists">
+			<li th:each="artist : ${artists}"><a
+			th:href="|@{/artist/}${artist.name}|" th:text="${artist.name} + ' ' "></a>
+			<span th:text="${artist.recordLabel}"></span></li>
+		</ul>
 	</div>
-		<!-- needs to be an input -->
+	</section>
 	
-	<footer>
-		<h6>Baltes Cartography</h6>
-	</footer>
+<hr/>
+	<section class="grid-item grid-item-form">
+	<h3>Don't see the Artist you are looking for, feel free to enter it.</h3>
+		<h5>All part fields are required!</h5>
+	<div>
+		<label for="name"> Artist Name:<input type="text" name="apiName" /></label> 
+		<label for="recordLabel"> Record Label:<input type="text" name="apiRecordLabel" /></label>
+		<button id="submitButton">Submit</button>
+	</div>
+	
+	</section>	
 		
+<hr/>		
+<section class="grid-item grid-item-footer">
+	<footer>
+		<h4>Baltes Cartography &copy;</h4>
+	</footer>
+</section>
+</main>		
 	<script src="/JS/artistApi.js"></script>
 </body>
 </html>

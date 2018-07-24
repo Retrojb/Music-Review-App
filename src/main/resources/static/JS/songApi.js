@@ -2,8 +2,11 @@ console.log('poop');
 
 const submitButton = document.getElementById("submitSongButton");
 const songList = document.getElementById("song-list");
-const name = document.querySelector("[name = 'apiName']");
-const albumName = document.querySelector("[name = 'apiAlbumName']");
+//const name = document.querySelector("[name = 'apiName']");
+//const albumName = document.querySelector("[name = 'apiAlbumName']");
+//const releaseDate = document.querySelector("[name = 'apiReleaseDate]");
+//const genre = document.querySelector("[name = 'apiGenre]");
+//const coverImage= document.querySelector("[name = 'apiCoverImage]");
 const songName = document.querySelector("[name = 'apiSongName']");
 const length = document.querySelector("[name = 'apiLength']");
 const lyrics = document.querySelector("[name = 'apiLyrics']");
@@ -32,10 +35,10 @@ submitButton.addEventListener ("click" , function addSong(){
 					`
 			})
 			songs.innerHTML = list
-			console.log('tits');
+			console.log(response);
 		}
 	})
-		xhr.open("POST", `/api/artist/${name.value}/albums/${albumName.value}?name=${name.value}&albumName=${albumName.value}&songName=${songName.value}&length=${length.value}&lyrics=${lyrics.value}&rating=${rating.value}`, true)
+		xhr.open("POST", `/api/songs?songName=${songName.value}&length=${length.value}&lyrics=${lyrics}&rating=${rating}`, true)
 		xhr.send();
 	})
 

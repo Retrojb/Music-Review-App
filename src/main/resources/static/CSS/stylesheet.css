@@ -1,0 +1,46 @@
+nav {
+	
+}
+
+.grid-item-nav{
+	animation: pulse 5s infinite;
+	font-size: 40px;
+	word-spacing: 15px;
+	font:white;
+	background-color: black;
+}
+
+
+
+.grid-item-nav a{
+	color: white;
+	text-decoration: none;
+	font-variant: small-caps;
+	font-family: 'Bangers';
+}
+
+.grid-item-nav a:hover{
+	background-color: #111111;
+	margin: .3rem;
+}
+input[type=text]{
+	color:white;
+	background-color: #000000;
+}
+
+.pulse{
+  animation: pulse 5s infinite;
+}
+@keyframes pulse {
+  0% {
+    background-color: #000000;
+  }
+  25%{
+  	background-color:#444c59;
+  }
+  50%{
+  	background-color:#4d3051;
+  }
+  100% {
+    background-color: #783582;
+}

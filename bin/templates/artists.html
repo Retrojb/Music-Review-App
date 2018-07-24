@@ -28,10 +28,11 @@
 	<h3>Pick an Artist to check out their discography</h3>
 	
 	<div >
-		<ul id="artists">
+		<ul class="artists">
 			<li th:each="artist : ${artists}"><a
 			th:href="|@{/artist/}${artist.name}|" th:text="${artist.name} + ' ' "></a>
-			<span th:text="${artist.recordLabel} + ' '"></span></li>
+			<span th:text="${artist.recordLabel} + ' '"></span>
+		<button class="deleteArtist">Delete Artist</button></li>
 		</ul>
 	</div>
 	
@@ -46,7 +47,6 @@
 		<label for="recordLabel"> Record Label:<input type="text" name="apiRecordLabel" /></label>
 		<button id="submitButton">Submit</button>
 		<button id="editArtist">Edit</button>
-		<button id="deleteArtist">Delete Artist</button>
 	</div>
 	
 	</section>	

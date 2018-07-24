@@ -1,7 +1,7 @@
 const artistsList = document.querySelector('.artists');
 console.log('hi')
 
-deleteArtist.addEventListener('click', function deleteArtist(event) {
+artistsList.addEventListener('click', function deleteArtist(event) {
 	if (event.target.classList.contains('deleteArtist')) {
 		console.log('hi')
 		const deleteArtistButton = event.target
@@ -11,7 +11,7 @@ deleteArtist.addEventListener('click', function deleteArtist(event) {
 		const hrefArray = artistContainer.querySelector('a').getAttribute('href').split("/")
 		const name = hrefArray[2]
 		
-		const xhr = XMLHttpRequest()
+		const xhr = new XMLHttpRequest()
 		
 		xhr.onreadystatechange = function(response) {
 			if (xhr.readyState == 4 && xhr.status == 200) {

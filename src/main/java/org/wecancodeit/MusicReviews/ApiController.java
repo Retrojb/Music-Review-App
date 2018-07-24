@@ -38,9 +38,10 @@ public class ApiController {
 	}
 
 	// Links the Artist --> album --> song
-	@RequestMapping("artists/{name}/albums/{albumName}")
+	@RequestMapping("artists/{name}/albums/{albumName}/songs/{songName}")
 	public Collection<Songs> getArtistAlbumSong(@PathVariable(name = "name") String name,
-			@PathVariable(name = "albumName") String albumName, @PathVariable(name = "songName") String songName) {
+												@PathVariable(name = "albumName") String albumName,
+												@PathVariable(name = "songName") String songName) {
 		return (Collection<Songs>) albumsRepo.findByAlbumName(albumName).getSongs();
 	}
 
@@ -48,7 +49,7 @@ public class ApiController {
 	@RequestMapping(value = "/artists/", method = RequestMethod.POST)
 	public Collection<Artist> addArtist(@RequestParam(value = "name") String name,
 			@RequestParam(value = "recordLabel") String recordLabel) {
-		// Prevents the artist from being double entered by user.
+		// Prevents the artist from being double entered by user. NESTED FOR LOOP THAT REMOVES SONG THAN ALBUM THAN ARTIST
 		if (artistRepo.findByName(name) == null) {
 			artistRepo.save(new Artist(name, recordLabel));
 		}
@@ -72,7 +73,7 @@ public class ApiController {
 		return (Collection<Artist>) artistRepo.findAll();
 	}
 
-	// Allows the user to ADD/POST an Artist into the DB
+	// Allows the user to ADD/POST an Album into the DB
 	@RequestMapping(value = "/albums", method = RequestMethod.POST)
 	public Collection<Albums> addAlbum(@RequestParam(value = "name") String name,
 			@RequestParam(value = "recordLabel") String recordLabel,
@@ -105,30 +106,18 @@ public class ApiController {
 	}
 
 	// Allows the user to ADD/POST an Song into the DB
-	@RequestMapping(value = "artist/{artist.name}/albums/album/{album.albumName}/", method = RequestMethod.POST)
-	public Collection<Songs> addSongs(@RequestParam(value = "name") String name,
-			@RequestParam(value = "albumName") String albumName, @RequestParam(value = "songName") String songName,
-			@RequestParam(value = "length") Double length, @RequestParam(value = "lyrics") String lyrics,
-			@RequestParam(value = "rating") String rating) {
-
-		Artist artist = artistRepo.findByName(name);
-		if (artist == null) {
-			artist = new Artist(name, albumName);
-
-			Albums albums = albumsRepo.findByAlbumName(albumName);
-
-			if (albumName == null) {
-				albums = new Albums();
-			}
-
-			albumsRepo.save(albums);
-			artistRepo.save(artist);
-		}
+	@RequestMapping(value = "/songs", method = RequestMethod.POST)
+	public Collection<Songs> addSong(
+			@RequestParam(value = "songName") String songName,
+			@RequestParam(value = "length") String length,
+			@RequestParam(value = "lyrics") String lyrics,
+			@RequestParam(value = "rating") String rating){
+			
 
 		Songs song = songRepo.findBySongName(songName);
 
 		if (song == null) {
-			song = new Songs(songName, length, lyrics, rating, albumsRepo.findByAlbumName(albumName), artistRepo.findByName(name));
+			song = new Songs(songName, length, lyrics, rating);
 		}
 		songRepo.save(song);
 

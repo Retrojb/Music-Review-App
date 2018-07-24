@@ -14,7 +14,7 @@ public class Songs {
 		private Long id;
 
 		private String songName;
-		private Double length;
+		private String length;
 		
 		@Lob
 		private String lyrics;
@@ -28,7 +28,7 @@ public class Songs {
 		
 		public Songs() {}
 
-		public Songs(String songName, Double length, String lyrics, String rating, Albums albums, Artist artist) {
+		public Songs(String songName, String length, String lyrics, String rating, Albums albums, Artist artist) {
 			this.songName = songName;
 			this.length = length;
 			this.lyrics = lyrics;
@@ -37,11 +37,17 @@ public class Songs {
 			this.artist = artist;
 		}
 
+		public Songs(String songName, String length, String lyrics, String rating) {
+			this.songName = songName;
+			this.length = length;
+			this.lyrics = lyrics;
+			this.rating = rating;
+		}
 		public String getSongName() {
 			return songName;
 		}
 
-		public Double getLength() {
+		public String getLength() {
 			return length;
 		}
 

@@ -13,83 +13,99 @@ public class artistController {
 
 	@Autowired
 	ArtistRepository artistRepo;
-	
+
 	@Autowired
 	AlbumsRepository albumRepo;
-	
+
 	@Autowired
 	SongsRepository songRepo;
-	
-	@RequestMapping("/index")
+
+	//Index currently a place holding page 
+	@RequestMapping("/")
 	public String home() {
 		return "index";
 	}
 
+	//Artist
+	// Hits the ARTISTS page. 
 	@RequestMapping("/artists")
 	public String getArtists(Model model) {
 		model.addAttribute("artists", artistRepo.findAll());
 		return "artists";
 	}
+
+	//Allows user to go to a SPECIFIC ARTIST in the list of ARTISTS
+	@RequestMapping("/artist/{name}")
+	public String getArtist(@PathVariable(name = "name") String name, Model model) {
+		model.addAttribute("artist", artistRepo.findByName(name));
+		return "artist";
+	}
 	
-	@RequestMapping("/albums")
+	
+	//Albums
+	// Hits ALBUMS page, does not link to the Artist.
+	@RequestMapping("/albums/")
 	public String getAlbums(Model model) {
 		model.addAttribute("albums", albumRepo.findAll());
 		return "albums";
 	}
 	
+	//Hits a ALBUM by an ARTIST
+	@RequestMapping("/artist/{name}/album/{albumName}")
+	public String getOneAlbum(@PathVariable(name = "name") String name,
+							  @PathVariable(name = "albumName") String albumName, Model model) {
+		model.addAttribute("album", albumRepo.findByAlbumName(albumName));
+		return "album";
+	}
+	// hits am album from the collection of albums
+	@RequestMapping("/albums/{albumName}")
+	public String getAnAlbumFromAlbums(@PathVariable(name = "albumName") String albumName, Model model) {
+		model.addAttribute("album", albumRepo.findByAlbumName(albumName));
+		return "album";
+	}
+		
+	//Songs
+	//Hits SONGS page list of all SONGS
 	@RequestMapping("/songs")
 	public String getSongs(Model model) {
 		model.addAttribute("songs", songRepo.findAll());
 		return "songs";
 	}
 	
-	@RequestMapping("/album/{albumName}")
-	public String getAlbum(@PathVariable(name = "albumName") String albumName, Model model) {
-		model.addAttribute("album", albumRepo.findByAlbumName(albumName));
-		return "album";
-	}
-	
-	@RequestMapping("/artist/{name}")
-	public String getArtist(@PathVariable(name = "name") String name, Model model) {
-		model.addAttribute("artist", artistRepo.findByName(name));
-		return "artist";	
-	}
-	
-	@RequestMapping("/album/{albumName}/song/{songName}")
-	public String getSong(@PathVariable(name = "songName") String songName, Model model) {
-		model.addAttribute("song", songRepo.findBySongName(songName));
-		return "song";	
-	}
-	
-	@RequestMapping("/album/{albumName}/songs/{songs}")
-	public String getSongsFromAlbum(@PathVariable(name = "albumName") String albumName,
-									@PathVariable (name = "songName") String songName, Model model) {
-		model.addAttribute("songs", songRepo.findAll());
-		return "songs";
-	}
-	
-	@RequestMapping(value = "/artists", method = RequestMethod.POST)
-	public String addArtist(String name, String recordLabel) {
-		Artist artist = artistRepo.findByName(name);
-		if (artist != null) {
-			artistRepo.save(new Artist(name, recordLabel));
-		}
-		return "redirect:/artists" + name;
-	}
-	
-	@RequestMapping("/artist/{name}/album/{albumName}")
-	public String getAlbumByName(@PathVariable(name = "name") String name,
-								@PathVariable(name = "albumName") String albumName, Model model) {
-		model.addAttribute("album", albumRepo.findByAlbumName(albumName));
-		return "album";
-	}
-	@RequestMapping("artist/{name}/album/{albumName}/song/{song}")
-	public String getOneSong(@PathVariable(name = "name") String name,
-							@PathVariable(name = "albumName")String albumName,
-							@PathVariable(name = "songName") String songName, Model model) {
+	//Gets a SONG
+	@RequestMapping("/song/{songName}")
+	public String getASong(@PathVariable(name = "songName") String songName, Model model) {
 		model.addAttribute("song", songRepo.findBySongName(songName));
 		return "song";
 	}
-		
 	
+//	//Gets a SONG from an ALBUM
+//	@RequestMapping("album/{albumName}/song/{songName}")
+//	public String getASongFromAnAlbum(@PathVariable(name = "songName") String songName, Model model) {
+//		model.addAttribute("song", songRepo.findBySongName(songName));
+//		return "song";
+//	}
+//	
+	//gets a SONG from SONGS by an ALBUM from an ARTIST
+	@RequestMapping("/artist/{name}/album/{albumName}/song/{songName}")
+	public String getOneSong(@PathVariable(name = "name") String name,
+							@PathVariable(name = "albumName") String albumName, 
+							@PathVariable(name = "songName") String songName,
+							Model model) {
+		model.addAttribute("song", songRepo.findBySongName(songName));
+		return "song";
+	}
+	
+
+//	//gets a List of all songs by an ARTIST
+//	@RequestMapping("artist/{name}/album/{albumName}/songs")
+//	public String getSongsFromAlbum(@PathVariable(name = "name") String name,
+//									@PathVariable(name = "albumName") String albumName, Model model) {
+//		model.addAttribute("songs", songRepo.findAll());
+//		return "songs";
+//	}
+
+	
+	
+
 }

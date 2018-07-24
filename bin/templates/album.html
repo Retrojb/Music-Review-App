@@ -3,28 +3,32 @@
 <head>
 
 <link rel="stylesheet" href="/CSS/layout.css"  />
-
+<link rel="stylesheet" href="/CSS/stylesheet.css"  />
+<style>
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  />
 	<title th:text="${album.albumName}">Album page</title>
 </head>
 
 <body>
 <main class="mainContainer">
 
-<header>
 <section class= "grid-item grid-item-nav">
-	
-	<nav>
+	<header class="pulse">
+		<nav>
 			<a th:href="@{/artists/}">Artists</a>
 			<a th:href="@{/albums/}">Albums</a>
 			<a th:href="@{/songs/}">Songs</a>
-	</nav>
-	</section>
+		</nav>
+	</header>
+</section>
 	
 	<section class= "grid-item grid-item-heading">
 	
 		<h1 th:text="${album.albumName}"></h1>
 	</section>
-</header>
+	
 	<section class= "grid-item grid-item-body">
 	
 	<ul>
@@ -35,16 +39,17 @@
             </li>
 	</ul>
 	
-	<div>
-		<label for="name"> Artist Name:<input type="text" name="apiName"  /></label>
-		<label for="albumName"> Album Name:<input type="text" name="apiAlbumName" /></label>
-		<label for="songName"> Song Name:<input type="text" name="apiSongName" /></label>
-		<label for="length"> Track Length:<input type="text" name="apiLength" /></label>
-		<label for="lyrics"> Lyrics:<input type="text" name="apiLyrics" /></label>
-		<label for="rating">Rating :<input type="text" name="apiRating" /></label>
+	<div class="sub-grid-form">
+ 	
+ 		<label for="songName" class="form-label"> Song Name:<input type="text" name="apiSongName"  class="form-input"  /></label>
+		<label for="length" class="form-label"> Track Length:<input type="text" name="apiLength" class="form-input" /></label>
+		<label for="lyrics" class="form-label"> Lyrics:<input type="text" name="apiLyrics" class="form-input" /></label>
+		<label for="rating" class="form-label">Rating :<input type="text" name="apiRating" class="form-input" /></label>
+		<label for="albumName" class="form-label"> Album Name:<input type="text" th:attr="value=#{album.albumName}" class="form-input" /></label>
 		<!-- needs to be an input -->
 		<!--<input type="submit" value="Submit" /> -->
 		<button id="submitSongButton">Submit</button>
+		<p>test</p>
 	</div>
 	</section>
 
